@@ -22,6 +22,10 @@ persist.dbg.wfc_avail_ovr=1
 # LMK
 ro.config.low_ram=false
 
+# IOP
+vendor.iop.enable_prefetch_ofr=1
+vendor.iop.enable_uxe=1
+
 # Media
 media.aac_51_output_enabled=true
 media.stagefright.enable-aac=true
