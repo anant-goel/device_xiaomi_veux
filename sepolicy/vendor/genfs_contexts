@@ -6,6 +6,9 @@ genfscon sysfs /devices/platform/soc/soc:fpc1020					u:object_r:vendor_sysfs_fin
 genfscon sysfs /devices/platform/soc/soc:goodix_fp					u:object_r:vendor_sysfs_fingerprint:s0
 genfscon sysfs /devices/platform/soc/soc:silead_fp					u:object_r:vendor_sysfs_fingerprint:s0
 
+# Charger
+genfscon sysfs /sys/class/power_supply/battery/input_suspend    u:object_r:vendor_sysfs_battery_supply:s0
+
 # SSR
 genfscon sysfs /devices/platform/soc/a400000.qcom,lpass/subsys[0-9]+/name		u:object_r:vendor_sysfs_ssr:s0
 genfscon sysfs /devices/platform/soc/a400000.qcom,lpass/subsys[0-9]+/restart_level	u:object_r:vendor_sysfs_ssr_toggle:s0

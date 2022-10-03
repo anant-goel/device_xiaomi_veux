@@ -12,6 +12,9 @@
 # Bluetooth
 /vendor/bin/init\.mi\.btmac\.sh								u:object_r:vendor_qti_init_shell_exec:s0
 
+# Smart Charging
+/sys/class/power_supply/battery/input_suspend                        u:object_r:vendor_sysfs_battery_supply:s0
+
 # Camera
 /mnt/vendor/persist/camera(/.*)?							u:object_r:camera_persist_file:s0
 

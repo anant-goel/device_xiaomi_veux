@@ -14,7 +14,6 @@ $(call inherit-product, vendor/miuicamera/config.mk)
 
 # Inherit some common ancient stuff.
 $(call inherit-product, vendor/ancient/config/common_full_phone.mk)
-$(call inherit-product, vendor/gapps/common/common-vendor.mk)
 TARGET_USES_AOSP_RECOVERY := true
 ANCIENT_OFFICIAL := true
 ANCIENT_GAPPS := true
