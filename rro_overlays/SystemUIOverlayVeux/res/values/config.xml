@@ -36,8 +36,23 @@
     <bool name="config_vibrateOnIconAnimation">true</bool>
 
     <!-- If not zero, limits the internal screen recorder's framerate to the set value. -->
-    <integer name="config_screenRecorderMaxFramerate">120</integer>
+    <integer name="config_screenRecorderMaxFramerate">60</integer>
 
+    <!-- A path similar to frameworks/base/core/res/res/values/config.xml
+         config_mainBuiltInDisplayCutout that describes a path larger than the exact path of a display
+         cutout. If present as well as config_enableDisplayCutoutProtection is set to true, then
+         SystemUI will draw this "protection path" instead of the display cutout path that is normally
+         used for anti-aliasing.
+         This path will only be drawn when the front-facing camera turns on, otherwise the main
+         DisplayCutout path will be rendered
+    -->
+    <string translatable="false" name="config_frontBuiltInDisplayCutoutProtection">M 500 52 a 37 37 0 1 0 82 0 a 37 37 0 1 0 -82 0 Z</string>
+
+    <!--  ID for the camera that needs extra protection -->
+    <string translatable="false" name="config_protectedCameraId">1</string>
+
+    <!--  Flag to turn on the rendering of the above path or not  -->
+    <bool name="config_enableDisplayCutoutProtection">true</bool>
     <!-- Type of a sensor that provides a low-power estimate of the desired display
          brightness, suitable to listen to while the device is asleep (e.g. during
          always-on display) -->
@@ -67,25 +82,8 @@
         <item>0</item>
     </integer-array>
 
-    <!-- A path similar to frameworks/base/core/res/res/values/config.xml
-         config_mainBuiltInDisplayCutout that describes a path larger than the exact path of a display
-         cutout. If present as well as config_enableDisplayCutoutProtection is set to true, then
-         SystemUI will draw this "protection path" instead of the display cutout path that is normally
-         used for anti-aliasing.
-         This path will only be drawn when the front-facing camera turns on, otherwise the main
-         DisplayCutout path will be rendered
-    -->
-    <string translatable="false" name="config_frontBuiltInDisplayCutoutProtection">M 500 52 a 37 37 0 1 0 82 0 a 37 37 0 1 0 -82 0 Z</string>
-
-    <!--  ID for the camera that needs extra protection -->
-    <string translatable="false" name="config_protectedCameraId">1</string>
-
-    <!--  Flag to turn on the rendering of the above path or not  -->
-    <bool name="config_enableDisplayCutoutProtection">true</bool>
- <!-- Preferred max refresh rate at AOD & Ambient Display, if supported by the display. -->
-    <integer name="config_aodMaxRefreshRate">60</integer>
-
- <!-- The battery current divider, some kernel report current value in mA other in µA.
+<!-- The battery current divider, some kernel report current value in mA other in µA.
          Leave 1 if you have mA, put 1000 if you have µA-->
     <integer name="config_battCurrentDivider" translatable="false">1000</integer>
+
 </resources>
