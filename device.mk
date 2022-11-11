@@ -99,9 +99,9 @@ TARGET_SCREEN_WIDTH := 1080
 
 # Boot Control
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.1-impl-qti \
-    android.hardware.boot@1.1-impl-qti.recovery \
-    android.hardware.boot@1.1-service
+    android.hardware.boot@1.2-impl-qti \
+    android.hardware.boot@1.2-impl-qti.recovery \
+    android.hardware.boot@1.2-service
 
 PRODUCT_PACKAGES_DEBUG += \
     bootctl
@@ -110,17 +110,20 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64 \
-    CameraGo \
-    privapp-permissions-camera-go.xml \
+    GoogleCameraGo \
     libcamera2ndk_vendor \
     libstdc++.vendor \
     vendor.qti.hardware.camera.device@1.0.vendor \
     vendor.qti.hardware.camera.postproc@1.0.vendor
 
-    PRODUCT_PACKAGES += \
+# Camx overrides
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/camxoverridesettings.txt:$(TARGET_COPY_OUT_VENDOR)/etc/camera/camxoverridesettings.txt
+
+PRODUCT_PACKAGES += \
     libpiex_shim
 
-# Component Overrides
+# Component overrides
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/component-overrides.xml:$(TARGET_COPY_OUT_VENDOR)/etc/sysconfig/component-overrides.xml
 
@@ -132,6 +135,13 @@ PRODUCT_PACKAGES += \
 # Device Uses High-Density Artwork Where Available
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
+
+# Dex
+PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := verify
+
+# DeviceSettings
+PRODUCT_PACKAGES += \
+    XiaomiParts
 
 # Display
 PRODUCT_PACKAGES += \
@@ -184,17 +194,6 @@ PRODUCT_PACKAGES += \
     vendor.goodix.hardware.biometrics.fingerprint@2.1.vendor \
     vendor.xiaomi.hardware.fingerprintextension@1.0.vendor
 
-# FM
-PRODUCT_PACKAGES += \
-    FM2 \
-    libqcomfm_jni \
-    qcom.fmradio \
-    qcom.fmradio.xml
-
-PRODUCT_COPY_FILES += \
-    prebuilts/vndk/v32/arm64/arch-arm-armv8-a/shared/vndk-sp/libhidlbase.so:$(TARGET_COPY_OUT_VENDOR)/lib/libhidlbase-v32.so \
-    prebuilts/vndk/v32/arm64/arch-arm64-armv8-a/shared/vndk-sp/libhidlbase.so:$(TARGET_COPY_OUT_VENDOR)/lib64/libhidlbase-v32.so
-
 # GPS
 PRODUCT_PACKAGES += \
     android.hardware.gnss@2.1-impl-qti \
@@ -234,8 +233,6 @@ PRODUCT_PACKAGES += \
 
 # HIDL
 PRODUCT_PACKAGES += \
-    android.hidl.base@1.0 \
-    android.hidl.base@1.0.vendor \
     libhidltransport.vendor \
     libhwbinder.vendor
 
@@ -297,7 +294,6 @@ PRODUCT_PACKAGES += \
     android.hardware.nfc@1.0-impl \
     android.hardware.secure_element@1.0.vendor \
     com.android.nfc_extras \
-    libchrome.vendor \
     vendor.nxp.nxpese@1.0 \
     vendor.nxp.nxpnfclegacy@1.0 \
     vendor.nxp.nxpnfclegacy@1.0.vendor \
@@ -307,14 +303,14 @@ PRODUCT_PACKAGES += \
 
 # Overlays
 PRODUCT_PACKAGES += \
-   CarrierConfigOverlayVeux \
-   DialerOverlayVeux \
-   FrameworksResOverlayVeux \
-   SettingsOverlayVeux \
-   SettingsProviderOverlayVeux \
-   SystemUIOverlayVeux \
-   TelephonyOverlayVeux \
-   WifiOverlayVeux
+    CarrierConfigOverlayVeux \
+    DialerOverlayVeux \
+    FrameworksResOverlayVeux \
+    SettingsOverlayVeux \
+    SettingsProviderOverlayVeux \
+    SystemUIOverlayVeux \
+    TelephonyOverlayVeux \
+    WifiOverlayVeux
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
@@ -380,12 +376,16 @@ PRODUCT_COPY_FILES += \
 
 # Perf
 PRODUCT_PACKAGES += \
-vendor.qti.hardware.perf@2.2.vendor
+    vendor.qti.hardware.perf@2.2.vendor
+
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/msm_irqbalance.conf:$(TARGET_COPY_OUT_VENDOR)/etc/msm_irqbalance.conf
 
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service-qti
-   
+
+# Powerhint
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/powerhint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/powerhint.xml
 
@@ -397,6 +397,7 @@ PRODUCT_PACKAGES += \
     libvndfwk_detect_jni.qti \
     libvndfwk_detect_jni.qti.vendor
 
+# Public Libraries
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt    
 
@@ -483,6 +484,10 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
+
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@2.0-service.qti
 
 # Update Engine
 PRODUCT_PACKAGES += \
