@@ -10,7 +10,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from veux device
 $(call inherit-product, device/xiaomi/veux/device.mk)
-$(call inherit-product, vendor/miuicamera/config.mk)
 
 # Inherit some common ancient stuff.
 $(call inherit-product, vendor/ancient/config/common_full_phone.mk)
@@ -19,7 +18,6 @@ ANCIENT_OFFICIAL := true
 ANCIENT_GAPPS := true
 TARGET_GAPPS_ARCH := arm64
 TARGET_BOOT_ANIMATION_RES := 1080
-EXTRA_UDFPS_ANIMATIONS := true
 TARGET_SUPPORTS_GOOGLE_RECORDER := true
 TARGET_INCLUDE_LIVE_WALLPAPERS := false
 TARGET_SUPPORTS_QUICK_TAP := true
