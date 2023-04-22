@@ -1,3 +1,6 @@
+# Aware
+ro.vendor.aware_available       u:object_r:vendor_aware_available_prop:s0
+
 # Camera
 camera.                         u:object_r:vendor_camera_prop:s0
 persist.camera.                 u:object_r:vendor_camera_prop:s0
@@ -15,6 +18,9 @@ sys.fp.vendor                   u:object_r:vendor_fingerprint_prop:s0
 vendor.fps_hal.                 u:object_r:vendor_fingerprint_prop:s0
 vendor.silead.fp.ext.           u:object_r:vendor_fingerprint_prop:s0
 
+# Graphics
+ro.vendor.gfx.32bit.target      u:object_r:vendor_default_prop:s0
+
 # Mlipay
 persist.vendor.sys.pay.         u:object_r:vendor_tee_listener_prop:s0
 persist.vendor.sys.provision.status u:object_r:vendor_tee_listener_prop:s0
@@ -30,3 +36,4 @@ vendor.sys.thermal.             u:object_r:vendor_thermal_normal_prop:s0
 # Wi-Fi
 ro.vendor.ril.oem.btmac         u:object_r:vendor_wifi_prop:s0
 ro.vendor.ril.oem.wifimac       u:object_r:vendor_wifi_prop:s0
+wifi.interface                  u:object_r:wifi_hal_prop:s0

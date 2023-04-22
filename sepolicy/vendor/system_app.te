@@ -2,3 +2,6 @@
 allow system_app sysfs_thermal:file rw_file_perms;
 
 allow system_app proc_pagetypeinfo:file r_file_perms;
+
+# vendor_aware_prop
+allow system_app vendor_aware_available_prop:file { open read };
