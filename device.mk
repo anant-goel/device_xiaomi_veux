@@ -45,7 +45,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     audioadsprpcd \
-    audio.primary.holi \
     audio.r_submix.default \
     audio.usb.default
 
@@ -260,8 +259,6 @@ PRODUCT_PACKAGES += \
     libOmxEvrcEnc \
     libOmxG711Enc \
     libOmxQcelp13Enc \
-    libOmxVdec \
-    libOmxVenc \
     libstagefrighthw \
     libstagefright_omx \
     libstagefright_foundation \
